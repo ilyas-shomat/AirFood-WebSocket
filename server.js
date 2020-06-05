@@ -18,10 +18,21 @@ wss.on('connection', (ws) => {
   let mes;
   ws.on('message', message => {
     mes = message
+
+    let obj = {
+      name: "Iliyas",
+      age: 22,
+      username: "Ileke"
+    }
+
     console.log(`Received message => ${message}`)
-    ws.send('Hello! '+ message)
+    wss.clients.forEach((client) => {
+      // client.send('Hello! '+ JSON.stringify(obj))
+      client.send('Hello! '+ message)
+    });
   });
   ws.send('Hello! Message From Server!!')
 });
+
 
 
