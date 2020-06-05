@@ -24,8 +24,4 @@ wss.on('connection', (ws) => {
   ws.send('Hello! Message From Server!!')
 });
 
-setInterval(() => {
-  wss.clients.forEach((client) => {
-    client.send(new Date().toTimeString());
-  });
-}, 1000);
+
