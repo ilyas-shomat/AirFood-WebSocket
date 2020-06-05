@@ -15,9 +15,17 @@ const wss = new Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.on('close', () => console.log('Client disconnected'));
+  ws.on('open', () => ws.send('bla bla bla'));
+  
 });
 
+wss.on('open', function open() {
+  ws.send('something');
+});
 
+wss.on('message', function incoming(data) {
+  console.log(data);
+});
 
 setInterval(() => {
   wss.clients.forEach((client) => {
