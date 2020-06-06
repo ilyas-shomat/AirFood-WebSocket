@@ -28,10 +28,10 @@ wss.on('connection', (ws) => {
     console.log(`Received message => ${message}`)
     wss.clients.forEach((client) => {
       // client.send('Hello! '+ JSON.stringify(obj))
-      client.send('Hello! '+ message)
+      client.send(message)
     });
   });
-  ws.send('Hello! Message From Server!!')
+  ws.send('Server works stable!!')
 });
 
 
