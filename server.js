@@ -16,14 +16,24 @@ wss.on('connection', (ws) => {
   console.log('Client connected');
   ws.on('close', () => console.log('Client disconnected'));
   let mes;
+
+
+  ws.on('ping', (ping) => {
+
+    console.log('get ping')
+  }); 
+
+  console.log('test')
+
   ws.on('message', message => {
     mes = message
 
+    /*
     let obj = {
       name: "Iliyas",
       age: 22,
       username: "Ileke"
-    }
+    }*/
 
     console.log(`Received message => ${message}`)
     wss.clients.forEach((client) => {
